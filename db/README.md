@@ -130,6 +130,20 @@ database. Here is an example:
 When we add a new record to the `sailors` table it will automatically
 choose a unique next value as the default value for the `sid` field.
 
+In addition to a *primary key* we may also want to impose a *foreign
+key* constraint. A *foreign key* is an attribute that is used to
+*reference* the primary key of another table. This is the fundamental
+technique in relational databases for linking information between
+multiple tables. To add a foreign key constraint we would do the
+following:
+
+    CREATE TABLE reserves (
+      sid int,
+      bid int,
+      day date,
+      foreign key (sid, bid) references sailors(sid), boats(bid);
+    );
+
 # Data Manipulation Language (DML)
 ## Record Updates
 After we have created our tables we are ready to add records. To do
